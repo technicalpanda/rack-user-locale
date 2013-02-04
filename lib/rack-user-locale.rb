@@ -1,4 +1,4 @@
-require 'i18n'
+require "i18n"
 
 module Rack
   class UserLocale
@@ -17,9 +17,9 @@ module Rack
       else
         status, headers, body = @app.call(@env)
         response = Rack::Response.new(body, status, headers)
-        response.set_cookie('user-locale', {
+        response.set_cookie("user-locale", {
           :value => I18n.locale,
-          :path => '/',
+          :path => "/",
           :domain => @request.host}) if get_cookie_locale != I18n.locale.to_s
         response.finish
       end
@@ -28,7 +28,7 @@ module Rack
     private
 
     def set_locale
-      I18n.locale = @env['rack.locale'] = locale.to_sym
+      I18n.locale = @env["rack.locale"] = locale.to_sym
     end
 
     def locale
@@ -36,7 +36,7 @@ module Rack
     end
 
     def get_cookie_locale
-      @request.cookies['user-locale']
+      @request.cookies["user-locale"]
     end
 
     def get_browser_locale
@@ -44,15 +44,15 @@ module Rack
       return if accept_langs.nil?
 
       languages_and_qvalues = accept_langs.split(",").map { |l|
-        l += ';q=1.0' unless l =~ /;q=\d+(?:\.\d+)?$/
-        l.split(';q=')
+        l += ";q=1.0" unless l =~ /;q=\d+(?:\.\d+)?$/
+        l.split(";q=")
       }
 
       lang = languages_and_qvalues.sort_by { |(locale, qvalue)|
         qvalue.to_f
       }.last.first
 
-      lang == '*' ? nil : lang
+      lang == "*" ? nil : lang
     end
 
     def get_default_locale

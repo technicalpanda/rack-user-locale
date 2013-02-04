@@ -3,6 +3,8 @@ rack-user-locale
 
 A Rack module for getting and setting a user's locale via a cookie or browser default language.
 
+Credit to these gems for pointing me in the direction I wanted to go in...
+
 https://github.com/rack/rack-contrib/blob/master/lib/rack/contrib/locale.rb
 https://github.com/jeremyvdw/rack-locale-selector
 https://github.com/jeffersongirao/rack-locale_chooser
@@ -23,7 +25,21 @@ gem 'rack-user-locale'
 Usage
 =====
 
-TODO: Usage
+Add the following line to your Rack application
+
+```
+use Rack::UserLocale
+```
+
+and thats it!!
+
+Your application will now attempt to set the I18n.locale value based on the following:
+
+* Whether a user has a "user-locale" cookie set
+* The "HTTP_ACCEPT_LANGUAGE" value
+* The I18n.default_locale value (basically a fallback)
+
+Should you wish to overwrite a users locale value the simple rewrite the "user-locale" cookie.
 
 Contributing to rack-user-locale
 =======================
