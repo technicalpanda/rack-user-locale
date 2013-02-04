@@ -43,16 +43,11 @@ module Rack
       accept_langs = @env["HTTP_ACCEPT_LANGUAGE"]
       return if accept_langs.nil?
 
-      languages_and_qvalues = accept_langs.split(",").map { |l|
-        l += ";q=1.0" unless l =~ /;q=\d+(?:\.\d+)?$/
-        l.split(";q=")
-      }
-
-      lang = languages_and_qvalues.sort_by { |(locale, qvalue)|
-        qvalue.to_f
-      }.last.first
-
-      lang == "*" ? nil : lang
+      lang = accept_langs.split(",").map { |l|
+          l += ';q=1.0' unless l =~ /;q=\d+\.\d+$/
+          l.split(';q=')
+        }.first
+      browser_locale = lang.first.split("-").first
     end
 
     def get_default_locale
