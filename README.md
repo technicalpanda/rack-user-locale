@@ -39,7 +39,7 @@ Your application will now attempt to set the I18n.locale value based on the foll
 * The "HTTP_ACCEPT_LANGUAGE" value
 * The I18n.default_locale value (basically a fallback)
 
-Should you wish to overwrite a users locale value the simple rewrite the "user-locale" cookie.
+Should you wish to overwrite a users locale value then simple rewrite the "user-locale" cookie.
 
 Contributing to rack-user-locale
 =======================
