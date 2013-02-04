@@ -1,7 +1,7 @@
 rack-user-locale
 ----------------
 
-TODO: Summary
+A Rack module for getting and setting a user's locale via a cookie or browser default language.
 
 Installation
 ============

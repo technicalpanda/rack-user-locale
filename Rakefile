@@ -17,10 +17,10 @@ Jeweler::Tasks.new do |gem|
   gem.name = "rack-user-locale"
   gem.homepage = "http://github.com/sleepingstu/rack-user-locale"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Rack module for getting and setting a user's locale}
+  gem.description = %Q{A Rack module for getting and setting a user's locale via a cookie or browser default language.}
   gem.email = "stuart.chinery@headlondon.com"
-  gem.authors = ["Stuart Chinery"]
+  gem.authors = ["Stuart Chinery", "Dave Hrycyszyn"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
@@ -32,22 +32,7 @@ Rake::TestTask.new(:test) do |test|
   test.verbose = true
 end
 
-require 'rcov/rcovtask'
-Rcov::RcovTask.new do |test|
-  test.libs << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
-  test.rcov_opts << '--exclude "gems/*"'
-end
-
 task :default => :test
 
-require 'rdoc/task'
-Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
-
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "rack-user-locale #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-end
+require 'yard'
+YARD::Rake::YardocTask.new
