@@ -11,7 +11,7 @@ describe "RackUserLocale" do
 
   describe "when a locale cookie is set" do
     before do
-      get 'http://example.com/', {}, 'HTTP_COOKIE' => 'locale=es'
+      get 'http://example.com/', {}, 'HTTP_COOKIE' => 'user-locale=es'
     end
 
     it "should have I18n.locale set to :es" do
@@ -33,7 +33,21 @@ describe "RackUserLocale" do
     end
 
     it "should set a cookie in the response" do
-      assert_equal "locale=ru; domain=example.com; path=/", last_response["Set-Cookie"]
+      assert_equal "user-locale=ru; domain=example.com; path=/", last_response["Set-Cookie"]
+    end
+  end
+
+  describe "when both a cooke and HTTP_ACCEPT_LANGUAGE headers are set" do
+    before do
+      get 'http://example.com/', {}, 'HTTP_COOKIE' => 'user-locale=jp', 'HTTP_ACCEPT_LANGUAGE' => 'fr'
+    end
+
+    it "should have I18n.locale set to :jp" do
+      assert_equal :jp, I18n.locale
+    end
+
+    it "should not set a cookie in the response" do
+      assert_equal nil, last_response["Set-Cookie"]
     end
   end
 
@@ -47,7 +61,7 @@ describe "RackUserLocale" do
     end
 
     it "should set a cookie in the response" do
-      assert_equal "locale=en; domain=example.com; path=/", last_response["Set-Cookie"]
+      assert_equal "user-locale=en; domain=example.com; path=/", last_response["Set-Cookie"]
     end
   end
 end

@@ -17,7 +17,7 @@ module Rack
       else
         status, headers, body = @app.call(@env)
         response = Rack::Response.new(body, status, headers)
-        response.set_cookie('locale', {
+        response.set_cookie('user-locale', {
           :value => I18n.locale,
           :path => '/',
           :domain => @request.host}) if get_cookie_locale != I18n.locale.to_s
@@ -36,7 +36,7 @@ module Rack
     end
 
     def get_cookie_locale
-      @request.cookies['locale']
+      @request.cookies['user-locale']
     end
 
     def get_browser_locale
