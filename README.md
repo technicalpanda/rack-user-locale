@@ -5,9 +5,9 @@ A Rack module for getting and setting a user's locale via a cookie or browser de
 
 Credit to these gems for pointing me in the direction I wanted to go in...
 
-https://github.com/rack/rack-contrib/blob/master/lib/rack/contrib/locale.rb
-https://github.com/jeremyvdw/rack-locale-selector
-https://github.com/jeffersongirao/rack-locale_chooser
+* https://github.com/rack/rack-contrib/blob/master/lib/rack/contrib/locale.rb
+* https://github.com/jeremyvdw/rack-locale-selector
+* https://github.com/jeffersongirao/rack-locale_chooser
 
 Installation
 ============
