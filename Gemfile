@@ -9,9 +9,11 @@ gem "i18n"
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
 group :development do
+  gem "bundler"
+  gem 'debugger'
+  gem "jeweler"
   gem "minitest"
+  gem "rack-test"
   gem "turn"
   gem "yard"
-  gem "bundler"
-  gem "jeweler"
 end
