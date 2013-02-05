@@ -38,7 +38,7 @@ and thats it!!
 Your application will now attempt to set the I18n.locale value based on the following:
 
 * Whether a user has a "user-locale" cookie set
-* The "HTTP_ACCEPT_LANGUAGE" value
+* The "HTTP_ACCEPT_LANGUAGE" value. If there are multiple values it will attempt to set the one ranked highest
 * The I18n.default_locale value (basically a fallback)
 
 There is the option to pass in an accepted array of locales, like so:
