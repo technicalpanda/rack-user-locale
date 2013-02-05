@@ -30,15 +30,12 @@ module Rack
     private
 
     def set_locale
-      I18n.locale = @env["rack.locale"] = accepted_locale(locale.to_sym)
+      new_locale = check_accepted? ? accepted_locale(locale.to_sym, get_default_locale) : locale.to_sym
+      I18n.locale = @env["rack.locale"] = new_locale
     end
 
-    def accepted_locale(locale)
-      if @options[:accepted_locales].count > 0
-        locale = @options[:accepted_locales].include?(locale) ? locale : get_default_locale
-      end
-
-      locale
+    def accepted_locale(locale, other_locale = nil)
+      locale = @options[:accepted_locales].include?(locale) ? locale : other_locale
     end
 
     def locale
@@ -50,18 +47,34 @@ module Rack
     end
 
     def get_browser_locale
-      accept_langs = @env["HTTP_ACCEPT_LANGUAGE"]
-      return if accept_langs.nil?
+      accept_lang = @env["HTTP_ACCEPT_LANGUAGE"]
+      return if accept_lang.nil?
 
-      lang = accept_langs.split(",").map { |l|
-          l += ';q=1.0' unless l =~ /;q=\d+\.\d+$/
-          l.split(';q=')
-        }.first
-      browser_locale = lang.first.split("-").first
+      langs = accept_lang.split(",").map { |l|
+        l += ';q=1.0' unless l =~ /;q=\d+\.\d+$/
+        l.split(';q=')
+      }.sort { |a, b| b[1] <=> a[1] }
+
+      if check_accepted?
+        langs.each do |lang|
+          l = accepted_locale(split_lang(lang.first).to_sym)
+          return l unless l.nil?
+        end
+      end
+
+      return split_lang(langs.first.first)
+    end
+
+    def split_lang(lang)
+      lang.split("-").first unless lang.nil?
     end
 
     def get_default_locale
       I18n.default_locale
+    end
+
+    def check_accepted?
+      @options[:accepted_locales].count > 0
     end
   end
 end
