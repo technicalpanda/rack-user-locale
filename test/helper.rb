@@ -19,14 +19,6 @@ begin; require 'turn/autorun'; rescue LoadError; end
 
 class MiniTest::Unit::TestCase
   include Rack::Test::Methods
-
-  def app
-    app = Rack::Builder.new {
-      use Rack::UserLocale
-
-      run BasicRackApp.new
-    }
-  end
 end
 
 class BasicRackApp

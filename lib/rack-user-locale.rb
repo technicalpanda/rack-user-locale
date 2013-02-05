@@ -3,8 +3,10 @@ require "i18n"
 module Rack
   class UserLocale
 
-    def initialize(app)
-      @app = app
+    def initialize(app, options = {})
+      @app, @options = app, {
+          :accepted_locales => []
+        }.merge(options)
     end
 
     def call(env)
@@ -28,7 +30,15 @@ module Rack
     private
 
     def set_locale
-      I18n.locale = @env["rack.locale"] = locale.to_sym
+      I18n.locale = @env["rack.locale"] = accepted_locale(locale.to_sym)
+    end
+
+    def accepted_locale(locale)
+      if @options[:accepted_locales].count > 0
+        locale = @options[:accepted_locales].include?(locale) ? locale : get_default_locale
+      end
+
+      locale
     end
 
     def locale
