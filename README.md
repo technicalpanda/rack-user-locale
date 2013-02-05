@@ -44,7 +44,7 @@ Your application will now attempt to set the I18n.locale value based on the foll
 There is the option to pass in an accepted array of locales, like so:
 
 ```
-use Rack::UserLocale, :accepted_locales => [:en, :es, :fr, :de, :jp, (whatever codes you support)]
+use Rack::UserLocale, :accepted_locales => [:de, :en, :es, :fr, :ja, :pt, :zh, (whatever codes you support)]
 ```
 
 If this option is supplied the the users locale will either be set to one of the accepted locales in the array, otherwise it will be set to the I18n.default_locale value.

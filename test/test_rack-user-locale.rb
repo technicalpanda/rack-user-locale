@@ -96,7 +96,7 @@ describe "RackUserLocale" do
     before do
       def app
         app = Rack::Builder.new {
-          use Rack::UserLocale, :accepted_locales => [:en, :es, :fr, :de, :jp, :nl]
+          use Rack::UserLocale, :accepted_locales => [:en, :es, :fr, :de, :ja, :nl]
 
           run BasicRackApp.new
         }
@@ -171,11 +171,11 @@ describe "RackUserLocale" do
 
     describe "when both a cooke and HTTP_ACCEPT_LANGUAGE headers are set" do
       before do
-        get "http://example.com/", {}, "HTTP_COOKIE" => "user-locale=jp", "HTTP_ACCEPT_LANGUAGE" => "fr-be"
+        get "http://example.com/", {}, "HTTP_COOKIE" => "user-locale=ja", "HTTP_ACCEPT_LANGUAGE" => "fr-be"
       end
 
-      it "should have I18n.locale set to :jp" do
-        assert_equal :jp, I18n.locale
+      it "should have I18n.locale set to :ja" do
+        assert_equal :ja, I18n.locale
       end
 
       it "should not set a cookie in the response" do
