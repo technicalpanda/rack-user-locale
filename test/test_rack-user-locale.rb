@@ -139,20 +139,36 @@ describe "RackUserLocale" do
       end
 
       describe "with an multiple locales" do
-        before do
-          get "http://example.com/", {},
-            "HTTP_ACCEPT_LANGUAGE" => "de-DE;q=0.8,de;q=0.8,no-NO;q=0.7,no;q=0.7,ru-RU;q=0.7,sv-SE;q=0.4,sv;q=0.3,nl-BE;q=0.9"
+        describe "at different weights" do
+          before do
+            get "http://example.com/", {},
+              "HTTP_ACCEPT_LANGUAGE" => "de-DE;q=0.8,de;q=0.8,no-NO;q=0.7,no;q=0.7,ru-RU;q=0.7,sv-SE;q=0.4,sv;q=0.3,nl-BE;q=0.9"
+          end
+
+          it "should have I18n.locale set to :nl" do
+            assert_equal :nl, I18n.locale
+          end
+
+          it "should set a cookie in the response" do
+            assert_equal "user-locale=nl; domain=example.com; path=/", last_response["Set-Cookie"]
+          end
         end
 
-        it "should have I18n.locale set to :nl" do
-          assert_equal :nl, I18n.locale
-        end
+        describe "at the same weight" do
+          before do
+            get "http://example.com/", {},
+              "HTTP_ACCEPT_LANGUAGE" => "fr,en,ja"
+          end
 
-        it "should set a cookie in the response" do
-          assert_equal "user-locale=nl; domain=example.com; path=/", last_response["Set-Cookie"]
+          it "should have I18n.locale set to :fr" do
+            assert_equal :fr, I18n.locale
+          end
+
+          it "should set a cookie in the response" do
+            assert_equal "user-locale=fr; domain=example.com; path=/", last_response["Set-Cookie"]
+          end
         end
       end
-
 
       describe "without an accepted locale" do
         before do
