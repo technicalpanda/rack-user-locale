@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "rack-user-locale"
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stuart Chinery", "Dave Hrycyszyn"]
-  s.date = "2013-02-05"
+  s.date = "2013-03-20"
   s.description = "A Rack module for getting and setting a user's locale via a cookie or browser default language."
   s.email = "stuart.chinery@headlondon.com"
   s.extra_rdoc_files = [
@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     ".document",
-    ".rvmrc",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
