@@ -9,7 +9,7 @@ module Rack
         }.merge(options)
     end
 
-    # The "non_ruby_request?" variable denotes a request which doesn't call a Ruby script.
+    # The "non_ruby_request" variable denotes a request which doesn't call a Ruby script.
     # This might be a CSS, static HTML, image, media, or JavaScript request.
     #
     # This check is in place so that if you're using this gem with multiple Rack
@@ -22,8 +22,8 @@ module Rack
       @request = Rack::Request.new(@env)
       set_locale
 
-      non_ruby_request? = @env["SCRIPT_NAME"] == ""
-      if @request.post? || @request.put? || @request.delete? || non_ruby_request?
+      non_ruby_request = (@env["SCRIPT_NAME"] == nil || @env["SCRIPT_NAME"] == "")
+      if @request.post? || @request.put? || @request.delete? || non_ruby_request
         @app.call(env)
       else
         status, headers, body = @app.call(@env)
