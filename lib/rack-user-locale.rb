@@ -9,21 +9,12 @@ module Rack
         }.merge(options)
     end
 
-    # The "non_ruby_request" variable denotes a request which doesn't call a Ruby script.
-    # This might be a CSS, static HTML, image, media, or JavaScript request.
-    #
-    # This check is in place so that if you're using this gem with multiple Rack
-    # apps running in the same application context, you won't have static resources
-    # resetting the currency selection due to requests going into the main app
-    # instead of a sub-app.
-    #
     def call(env)
       @env = env
       @request = Rack::Request.new(@env)
       set_locale
 
-      non_ruby_request = (@env["SCRIPT_NAME"] == nil || @env["SCRIPT_NAME"] == "")
-      if @request.post? || @request.put? || @request.delete? || non_ruby_request
+      if @request.post? || @request.put? || @request.delete?
         @app.call(env)
       else
         status, headers, body = @app.call(@env)

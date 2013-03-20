@@ -49,8 +49,22 @@ use Rack::UserLocale, :accepted_locales => [:de, :en, :es, :fr, :ja, :pt, :zh, (
 
 If this option is supplied the the users locale will either be set to one of the accepted locales in the array, otherwise it will be set to the I18n.default_locale value.
 
-
 Should you wish to overwrite a users locale value at any point in your application, like for changing language prefs, then simple rewrite the "user-locale" cookie with a new value.
+
+**Note:**
+
+The user locale detection is done on every Rack::Request, which would include all of the non Ruby/Rack actions like .css or .js files.
+
+If you don't want this happen then you can use Rack::Static in your application and filter out which files Rack should serve up statically.
+
+Something like this:
+
+```
+use Rack::Static, :urls => ["/*"], :root => "public"
+```
+would serve anything in your public folder statically and wouldn't create a Rack::Request.
+
+See the [Rack::Static docs](http://rack.rubyforge.org/doc/classes/Rack/Static.html) for more info.
 
 Contributing to rack-user-locale
 =======================

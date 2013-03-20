@@ -92,34 +92,6 @@ describe "RackUserLocale" do
         assert_equal "user-locale=en; domain=example.com; path=/", last_response["Set-Cookie"]
       end
     end
-
-    describe "when SCRIPT_NAME is nil" do
-      before do
-        get "http://example.com/", {}
-      end
-
-      it "should have I18n.locale set to :en" do
-        assert_equal :en, I18n.locale
-      end
-
-      it "should set a cookie in the response" do
-        refute_equal "user-locale=en; domain=example.com; path=/", last_response["Set-Cookie"]
-      end
-    end
-
-    describe "when SCRIPT_NAME is blank" do
-      before do
-        get "http://example.com/", {}, { "SCRIPT_NAME" => "" }
-      end
-
-      it "should have I18n.locale set to :en" do
-        assert_equal :en, I18n.locale
-      end
-
-      it "should set a cookie in the response" do
-        refute_equal "user-locale=en; domain=example.com; path=/", last_response["Set-Cookie"]
-      end
-    end
   end
 
   describe "with accepted_locales set" do
@@ -242,34 +214,6 @@ describe "RackUserLocale" do
 
       it "should set a cookie in the response" do
         assert_equal "user-locale=en; domain=example.com; path=/", last_response["Set-Cookie"]
-      end
-    end
-
-    describe "when SCRIPT_NAME is nil" do
-      before do
-        get "http://example.com/", {}
-      end
-
-      it "should have I18n.locale set to :en" do
-        assert_equal :en, I18n.locale
-      end
-
-      it "should set a cookie in the response" do
-        refute_equal "user-locale=en; domain=example.com; path=/", last_response["Set-Cookie"]
-      end
-    end
-
-    describe "when SCRIPT_NAME is blank" do
-      before do
-        get "http://example.com/", {}, { "SCRIPT_NAME" => "" }
-      end
-
-      it "should have I18n.locale set to :en" do
-        assert_equal :en, I18n.locale
-      end
-
-      it "should set a cookie in the response" do
-        refute_equal "user-locale=en; domain=example.com; path=/", last_response["Set-Cookie"]
       end
     end
   end
