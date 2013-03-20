@@ -60,7 +60,7 @@ If you don't want this happen then you can use Rack::Static in your application 
 Something like this:
 
 ```
-use Rack::Static, :urls => ["/*"], :root => "public"
+use Rack::Static, :urls => ["/css", "/js"], :root => "public"
 ```
 would serve anything in your public folder statically and wouldn't create a Rack::Request.
 

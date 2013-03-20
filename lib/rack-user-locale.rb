@@ -29,23 +29,33 @@ module Rack
 
     private
 
+    # TODO: Write notes
+    #
     def set_locale
       new_locale = check_accepted? ? accepted_locale(locale.to_sym, get_default_locale) : locale.to_sym
       I18n.locale = @env["rack.locale"] = new_locale
     end
 
+    # TODO: Write notes
+    #
     def accepted_locale(locale, other_locale = nil)
       locale = @options[:accepted_locales].include?(locale) ? locale : other_locale
     end
 
+    # TODO: Write notes
+    #
     def locale
       get_cookie_locale || get_browser_locale || get_default_locale
     end
 
+    # TODO: Write notes
+    #
     def get_cookie_locale
       @request.cookies["user-locale"]
     end
 
+    # TODO: Write notes
+    #
     def get_browser_locale
       accept_lang = @env["HTTP_ACCEPT_LANGUAGE"]
       return if accept_lang.nil?
@@ -65,14 +75,20 @@ module Rack
       return split_lang(langs.first.first)
     end
 
+    # TODO: Write notes
+    #
     def split_lang(lang)
       lang.split("-").first unless lang.nil?
     end
 
+    # TODO: Write notes
+    #
     def get_default_locale
       I18n.default_locale
     end
 
+    # TODO: Write notes
+    #
     def check_accepted?
       @options[:accepted_locales].count > 0
     end
