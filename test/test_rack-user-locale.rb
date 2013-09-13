@@ -43,7 +43,7 @@ describe "RackUserLocale" do
         end
 
         it "should set a cookie in the response" do
-          assert_equal "user-locale=fr; domain=example.com; path=/", last_response["Set-Cookie"]
+          assert_equal "user-locale=fr; path=/", last_response["Set-Cookie"]
         end
       end
 
@@ -59,7 +59,7 @@ describe "RackUserLocale" do
         end
 
         it "should set a cookie in the response" do
-          assert_equal "user-locale=no; domain=example.com; path=/", last_response["Set-Cookie"]
+          assert_equal "user-locale=no; path=/", last_response["Set-Cookie"]
         end
       end
     end
@@ -89,7 +89,7 @@ describe "RackUserLocale" do
       end
 
       it "should set a cookie in the response" do
-        assert_equal "user-locale=en; domain=example.com; path=/", last_response["Set-Cookie"]
+        assert_equal "user-locale=en; path=/", last_response["Set-Cookie"]
       end
     end
   end
@@ -136,7 +136,7 @@ describe "RackUserLocale" do
         end
 
         it "should set a cookie in the response" do
-          assert_equal "user-locale=fr; domain=example.com; path=/", last_response["Set-Cookie"]
+          assert_equal "user-locale=fr; path=/", last_response["Set-Cookie"]
         end
       end
 
@@ -153,7 +153,7 @@ describe "RackUserLocale" do
           end
 
           it "should set a cookie in the response" do
-            assert_equal "user-locale=nl; domain=example.com; path=/", last_response["Set-Cookie"]
+            assert_equal "user-locale=nl; path=/", last_response["Set-Cookie"]
           end
         end
 
@@ -168,7 +168,7 @@ describe "RackUserLocale" do
           end
 
           it "should set a cookie in the response" do
-            assert_equal "user-locale=fr; domain=example.com; path=/", last_response["Set-Cookie"]
+            assert_equal "user-locale=fr; path=/", last_response["Set-Cookie"]
           end
         end
       end
@@ -183,7 +183,7 @@ describe "RackUserLocale" do
         end
 
         it "should set a cookie in the response" do
-          assert_equal "user-locale=en; domain=example.com; path=/", last_response["Set-Cookie"]
+          assert_equal "user-locale=en; path=/", last_response["Set-Cookie"]
         end
       end
     end
@@ -213,7 +213,7 @@ describe "RackUserLocale" do
       end
 
       it "should set a cookie in the response" do
-        assert_equal "user-locale=en; domain=example.com; path=/", last_response["Set-Cookie"]
+        assert_equal "user-locale=en; path=/", last_response["Set-Cookie"]
       end
     end
   end

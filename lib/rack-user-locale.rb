@@ -3,12 +3,16 @@ require "i18n"
 module Rack
   class UserLocale
 
+    # TODO: Write notes
+    #
     def initialize(app, options = {})
       @app, @options = app, {
           :accepted_locales => []
         }.merge(options)
     end
 
+    # TODO: Write notes
+    #
     def call(env)
       @env = env
       @request = Rack::Request.new(@env)
@@ -21,8 +25,7 @@ module Rack
         response = Rack::Response.new(body, status, headers)
         response.set_cookie("user-locale", {
           :value => I18n.locale,
-          :path => "/",
-          :domain => @request.host}) if get_cookie_locale != I18n.locale.to_s
+          :path => "/"}) if get_cookie_locale != I18n.locale.to_s
         response.finish
       end
     end
