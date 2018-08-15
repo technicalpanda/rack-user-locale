@@ -49,3 +49,4 @@ pkg
 #*.rbc
 
 .rvmrc
+.byebug_history

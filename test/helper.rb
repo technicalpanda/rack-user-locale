@@ -1,30 +1,33 @@
-require 'rubygems'
-require 'bundler'
+# frozen_string_literal: true
+
+require "rubygems"
+require "bundler"
 require "rack/test"
-require "debugger"
 
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
-  $stderr.puts e.message
-  $stderr.puts "Run `bundle install` to install missing gems"
+  warn e.message
+  warn "Run `bundle install` to install missing gems"
   exit e.status_code
 end
-require 'minitest/autorun'
 
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
+require "minitest/autorun"
+require "minitest/fail_fast"
+require "minitest/reporters"
+require "minitest/spec"
+
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "..", "lib"))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
-require 'rack-user-locale'
-begin; require 'turn/autorun'; rescue LoadError; end
+require "rack-user-locale"
 
-class MiniTest::Unit::TestCase
+class Minitest::Test
+  extend Minitest::Spec::DSL
   include Rack::Test::Methods
 end
 
-class BasicRackApp
-  def call(env)
-    [200, {'Content-Type' => 'text/plain'}, 'Hello World']
-  end
-end
-
-MiniTest::Unit.autorun
+Minitest::Reporters.use!(
+  Minitest::Reporters::SpecReporter.new,
+  ENV,
+  Minitest.backtrace_filter
+)

@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 require "i18n"
 
 module Rack
   class UserLocale
-
     # TODO: Write notes
     #
     def initialize(app, options = {})
-      @app, @options = app, {
-          :accepted_locales => []
-        }.merge(options)
+      @app = app
+      @options = {
+        accepted_locales: []
+      }.merge(options)
     end
 
     # TODO: Write notes
@@ -18,16 +20,12 @@ module Rack
       @request = Rack::Request.new(@env)
       set_locale
 
-      if @request.post? || @request.put? || @request.delete?
-        @app.call(env)
-      else
-        status, headers, body = @app.call(@env)
-        response = Rack::Response.new(body, status, headers)
-        response.set_cookie("user-locale", {
-          :value => I18n.locale,
-          :path => "/"}) if get_cookie_locale != I18n.locale.to_s
-        response.finish
-      end
+      @app.call(env) && return if @request.post? || @request.put? || @request.delete?
+
+      status, headers, body = @app.call(@env)
+      response = Rack::Response.new(body, status, headers)
+      response.set_cookie("user-locale", value: I18n.locale, path: "/") if cookie_locale != I18n.locale.to_s
+      response.finish
     end
 
     private
@@ -35,38 +33,40 @@ module Rack
     # TODO: Write notes
     #
     def set_locale
-      new_locale = check_accepted? ? accepted_locale(locale.to_sym, get_default_locale) : locale.to_sym
+      new_locale = check_accepted? ? accepted_locale(locale.to_sym, default_locale) : locale.to_sym
       I18n.locale = @env["rack.locale"] = new_locale
     end
 
     # TODO: Write notes
     #
     def accepted_locale(locale, other_locale = nil)
-      locale = @options[:accepted_locales].include?(locale) ? locale : other_locale
+      @options[:accepted_locales].include?(locale) ? locale : other_locale
     end
 
     # TODO: Write notes
     #
     def locale
-      get_cookie_locale || get_browser_locale || get_default_locale
+      cookie_locale || browser_locale || default_locale
     end
 
     # TODO: Write notes
     #
-    def get_cookie_locale
+    def cookie_locale
       @request.cookies["user-locale"]
     end
 
     # TODO: Write notes
     #
-    def get_browser_locale
+    def browser_locale
       accept_lang = @env["HTTP_ACCEPT_LANGUAGE"]
       return if accept_lang.nil?
 
-      langs = accept_lang.split(",").map { |l|
-        l += ';q=1.0' unless l =~ /;q=\d+\.\d+$/
-        l.split(';q=')
-      }.sort { |a, b| b[1] <=> a[1] }
+      langs = accept_lang.split(",").map do |l|
+        l += ";q=1.0" unless l =~ /;q=\d+\.\d+$/
+        l.split(";q=")
+      end
+
+      langs.sort! { |a, b| b[1] <=> a[1] }
 
       if check_accepted?
         langs.each do |lang|
@@ -75,25 +75,26 @@ module Rack
         end
       end
 
-      return split_lang(langs.first.first)
+      split_lang(langs.first.first)
     end
 
     # TODO: Write notes
     #
     def split_lang(lang)
-      lang.split("-").first unless lang.nil?
+      return if lang.nil?
+      lang.split("-").first
     end
 
     # TODO: Write notes
     #
-    def get_default_locale
+    def default_locale
       I18n.default_locale
     end
 
     # TODO: Write notes
     #
     def check_accepted?
-      @options[:accepted_locales].count > 0
+      @options[:accepted_locales].count.positive?
     end
   end
 end
