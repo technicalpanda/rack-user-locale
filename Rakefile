@@ -15,7 +15,7 @@ require "jeweler"
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "rack-user-locale"
-  gem.homepage = "http://github.com/sleepingstu/rack-user-locale"
+  gem.homepage = "http://github.com/schinery/rack-user-locale"
   gem.license = "MIT"
   gem.summary = %(Rack module for getting and setting a user's locale)
   gem.description = %(A Rack module for getting and setting a user's locale via a cookie or browser default language.)
