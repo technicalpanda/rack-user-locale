@@ -14,6 +14,7 @@ end
 
 require "minitest/autorun"
 require "minitest/fail_fast"
+require "minitest/macos_notification"
 require "minitest/reporters"
 require "minitest/spec"
 
@@ -27,7 +28,10 @@ class Minitest::Test
 end
 
 Minitest::Reporters.use!(
-  Minitest::Reporters::SpecReporter.new,
+  [
+    Minitest::Reporters::SpecReporter.new,
+    Minitest::Reporters::MacosNotificationReporter.new(title: "Rack::UserLocale Gem")
+  ],
   ENV,
   Minitest.backtrace_filter
 )
