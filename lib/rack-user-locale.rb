@@ -9,7 +9,7 @@ module Rack
     def initialize(app, options = {})
       @app = app
       @options = {
-        accepted_locales: []
+        accepted_locales: [],
         cookie_name: 'user-locale'
       }.merge(options)
     end
