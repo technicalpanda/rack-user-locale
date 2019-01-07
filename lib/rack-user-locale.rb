@@ -82,6 +82,7 @@ module Rack
     #
     def split_lang(lang)
       return if lang.nil?
+
       lang.split("-").first
     end
 
