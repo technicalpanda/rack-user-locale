@@ -2,7 +2,6 @@
 
 require "helper"
 require "basic_rack_app"
-require "byebug"
 
 class RackUserLocaleTest < Minitest::Test
   describe Rack::UserLocale do

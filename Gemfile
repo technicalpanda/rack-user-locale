@@ -2,19 +2,7 @@
 
 source "https://rubygems.org"
 
-gem "i18n"
-gem "rack"
+git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
-# Add dependencies to develop your gem here.
-# Include everything needed to run rake, tests, features, etc.
-group :development do
-  gem "bundler", "~> 1.16"
-  gem "byebug"
-  gem "jeweler", "~> 2.3"
-  gem "minitest", "~> 5.0"
-  gem "minitest-fail-fast", "~> 0.1"
-  gem "minitest-macos-notification", "~> 0"
-  gem "minitest-reporters", "~> 1.3"
-  gem "rack-test", "~> 1.1"
-  gem "yard", "~> 0.9"
-end
+# Specify your gem's dependencies in rack-user-locale.gemspec
+gemspec

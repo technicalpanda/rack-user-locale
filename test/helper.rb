@@ -20,7 +20,7 @@ require "minitest/spec"
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "..", "lib"))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
-require "rack-user-locale"
+require "user-locale"
 
 class Minitest::Test
   extend Minitest::Spec::DSL

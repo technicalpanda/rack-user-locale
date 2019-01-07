@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Rack
-  module UserLocale
+  class UserLocale
     VERSION = File.read("VERSION").split("\n").first
   end
 end
