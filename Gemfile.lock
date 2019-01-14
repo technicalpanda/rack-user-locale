@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rack-user-locale (0.2.1)
+    rack-user-locale (0.2.2)
       i18n (>= 0.6.6)
       rack (>= 1.6.11)
 
@@ -11,12 +11,12 @@ GEM
     ansi (1.5.0)
     builder (3.2.3)
     concurrent-ruby (1.1.4)
-    i18n (1.5.1)
+    i18n (1.5.2)
       concurrent-ruby (~> 1.0)
     minitest (5.11.3)
     minitest-fail-fast (0.1.0)
       minitest (~> 5)
-    minitest-macos-notification (0.0.4)
+    minitest-macos-notification (0.0.5)
       minitest (~> 5.0)
       minitest-reporters (~> 1.3)
       os (~> 1.0)
@@ -38,14 +38,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.16)
-  minitest (~> 5.0)
-  minitest-fail-fast (~> 0.1)
-  minitest-macos-notification (~> 0)
-  minitest-reporters (~> 1.3)
-  rack-test (~> 1.1)
+  bundler (~> 1.17.2)
+  minitest (~> 5.11.3)
+  minitest-fail-fast (~> 0.1.0)
+  minitest-macos-notification (~> 0.0.5)
+  minitest-reporters (~> 1.3.5)
+  rack-test (~> 1.1.0)
   rack-user-locale!
-  rake (~> 12.0)
+  rake (~> 12.3.2)
 
 BUNDLED WITH
    1.17.2
