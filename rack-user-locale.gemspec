@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "i18n", ">= 0.6.6"
   spec.add_dependency "rack", ">= 1.6.11"
 
-  spec.add_development_dependency "bundler", "~> 1.17.2"
+  spec.add_development_dependency "bundler", "~> 2.0.1"
   spec.add_development_dependency "minitest", "~> 5.11.3"
   spec.add_development_dependency "minitest-fail-fast", "~> 0.1.0"
   spec.add_development_dependency "minitest-macos-notification", "~> 0.0.5"
