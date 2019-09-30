@@ -9,11 +9,13 @@ class RackUserLocaleTest < Minitest::Test
       I18n.enforce_available_locales = false
     end
 
-    describe "without accepted_locales set" do
+    describe "without accepted_locales but cookie_name set" do
+      let(:cookie_name) { "foo-locale" }
+
       before do
         def app
           Rack::Builder.new do
-            use Rack::UserLocale
+            use Rack::UserLocale, cookie_name: "foo-locale"
 
             run BasicRackApp.new
           end
@@ -29,7 +31,7 @@ class RackUserLocaleTest < Minitest::Test
 
       describe "when a locale cookie is set" do
         before do
-          get "http://example.com/", {}, "HTTP_COOKIE" => "user-locale=be"
+          get "http://example.com/", {}, "HTTP_COOKIE" => "#{cookie_name}=be"
         end
 
         it "should have I18n.locale set to :be" do
@@ -52,7 +54,7 @@ class RackUserLocaleTest < Minitest::Test
           end
 
           it "should set a cookie in the response" do
-            assert_equal "user-locale=fr; path=/", last_response["Set-Cookie"]
+            assert_equal "#{cookie_name}=fr; path=/", last_response["Set-Cookie"]
           end
         end
 
@@ -68,14 +70,14 @@ class RackUserLocaleTest < Minitest::Test
           end
 
           it "should set a cookie in the response" do
-            assert_equal "user-locale=no; path=/", last_response["Set-Cookie"]
+            assert_equal "#{cookie_name}=no; path=/", last_response["Set-Cookie"]
           end
         end
       end
 
       describe "when both a cooke and HTTP_ACCEPT_LANGUAGE headers are set" do
         before do
-          get "http://example.com/", {}, "HTTP_COOKIE" => "user-locale=af",
+          get "http://example.com/", {}, "HTTP_COOKIE" => "#{cookie_name}=af",
                                          "HTTP_ACCEPT_LANGUAGE" => "ar-sa", "SCRIPT_NAME" => "/"
         end
 
@@ -98,12 +100,14 @@ class RackUserLocaleTest < Minitest::Test
         end
 
         it "should set a cookie in the response" do
-          assert_equal "user-locale=en; path=/", last_response["Set-Cookie"]
+          assert_equal "#{cookie_name}=en; path=/", last_response["Set-Cookie"]
         end
       end
     end
 
-    describe "with accepted_locales set" do
+    describe "with accepted_locales set and the default cookie name" do
+      let(:cookie_name) { "user-locale" }
+
       before do
         def app
           Rack::Builder.new do
@@ -123,7 +127,7 @@ class RackUserLocaleTest < Minitest::Test
 
       describe "when a locale cookie is set" do
         before do
-          get "http://example.com/", {}, "HTTP_COOKIE" => "user-locale=es", "SCRIPT_NAME" => "/"
+          get "http://example.com/", {}, "HTTP_COOKIE" => "#{cookie_name}=es", "SCRIPT_NAME" => "/"
         end
 
         it "should have I18n.locale set to :es" do
@@ -146,7 +150,7 @@ class RackUserLocaleTest < Minitest::Test
           end
 
           it "should set a cookie in the response" do
-            assert_equal "user-locale=fr; path=/", last_response["Set-Cookie"]
+            assert_equal "#{cookie_name}=fr; path=/", last_response["Set-Cookie"]
           end
         end
 
@@ -163,7 +167,7 @@ class RackUserLocaleTest < Minitest::Test
             end
 
             it "should set a cookie in the response" do
-              assert_equal "user-locale=nl; path=/", last_response["Set-Cookie"]
+              assert_equal "#{cookie_name}=nl; path=/", last_response["Set-Cookie"]
             end
           end
 
@@ -178,7 +182,7 @@ class RackUserLocaleTest < Minitest::Test
             end
 
             it "should set a cookie in the response" do
-              assert_equal "user-locale=fr; path=/", last_response["Set-Cookie"]
+              assert_equal "#{cookie_name}=fr; path=/", last_response["Set-Cookie"]
             end
           end
         end
@@ -193,14 +197,14 @@ class RackUserLocaleTest < Minitest::Test
           end
 
           it "should set a cookie in the response" do
-            assert_equal "user-locale=en; path=/", last_response["Set-Cookie"]
+            assert_equal "#{cookie_name}=en; path=/", last_response["Set-Cookie"]
           end
         end
       end
 
       describe "when both a cooke and HTTP_ACCEPT_LANGUAGE headers are set" do
         before do
-          get "http://example.com/", {}, "HTTP_COOKIE" => "user-locale=ja",
+          get "http://example.com/", {}, "HTTP_COOKIE" => "#{cookie_name}=ja",
                                          "HTTP_ACCEPT_LANGUAGE" => "fr-be", "SCRIPT_NAME" => "/"
         end
 
@@ -223,7 +227,7 @@ class RackUserLocaleTest < Minitest::Test
         end
 
         it "should set a cookie in the response" do
-          assert_equal "user-locale=en; path=/", last_response["Set-Cookie"]
+          assert_equal "#{cookie_name}=en; path=/", last_response["Set-Cookie"]
         end
       end
     end

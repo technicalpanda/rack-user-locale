@@ -9,7 +9,8 @@ module Rack
     def initialize(app, options = {})
       @app = app
       @options = {
-        accepted_locales: []
+        accepted_locales: [],
+        cookie_name: "user-locale"
       }.merge(options)
     end
 
@@ -24,7 +25,7 @@ module Rack
 
       status, headers, body = @app.call(@env)
       response = Rack::Response.new(body, status, headers)
-      response.set_cookie("user-locale", value: I18n.locale, path: "/") if cookie_locale != I18n.locale.to_s
+      response.set_cookie(@options[:cookie_name], value: I18n.locale, path: "/") if cookie_locale != I18n.locale.to_s
       response.finish
     end
 
@@ -52,7 +53,7 @@ module Rack
     # TODO: Write notes
     #
     def cookie_locale
-      @request.cookies["user-locale"]
+      @request.cookies[@options[:cookie_name]]
     end
 
     # TODO: Write notes
