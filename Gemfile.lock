@@ -27,7 +27,7 @@ GEM
       minitest (>= 5.0)
       ruby-progressbar
     os (1.0.1)
-    rack (2.0.7)
+    rack (2.0.8)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rake (13.0.1)
