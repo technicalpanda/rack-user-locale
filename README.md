@@ -86,6 +86,6 @@ use Rack::UserLocale, cookie_name: "some-cookie-name"
 
 ## Copyright
 
-Copyright (c) 2019 [Stuart Chinery](https://github.com/schinery) and [Dave Hrycyszyn](https://github.com/futurechimp).
+Copyright (c) 2020 [Stuart Chinery](https://github.com/schinery) and [Dave Hrycyszyn](https://github.com/futurechimp).
 
 See LICENSE.txt for further details.
