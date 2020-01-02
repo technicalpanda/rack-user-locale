@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     rack-user-locale (0.4.0)
-      i18n (>= 0.6.6)
-      rack (>= 1.6.11)
+      i18n (>= 1.7.0)
+      rack (>= 2.0.8)
 
 GEM
   remote: https://rubygems.org/
@@ -39,9 +39,9 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 2.0)
-  minitest (~> 5.12)
+  minitest (~> 5.13)
   minitest-fail-fast (~> 0.1)
-  minitest-macos-notification (~> 0.1)
+  minitest-macos-notification (~> 0.2)
   minitest-reporters (~> 1.4)
   rack-test (~> 1.1)
   rack-user-locale!

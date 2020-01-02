@@ -22,13 +22,13 @@ Gem::Specification.new do |spec|
     "VERSION"
   ]
 
-  spec.add_dependency "i18n", ">= 0.6.6"
-  spec.add_dependency "rack", ">= 1.6.11"
+  spec.add_dependency "i18n", ">= 1.7.0"
+  spec.add_dependency "rack", ">= 2.0.8"
 
   spec.add_development_dependency "bundler", "~> 2.0"
-  spec.add_development_dependency "minitest", "~> 5.12"
+  spec.add_development_dependency "minitest", "~> 5.13"
   spec.add_development_dependency "minitest-fail-fast", "~> 0.1"
-  spec.add_development_dependency "minitest-macos-notification", "~> 0.1"
+  spec.add_development_dependency "minitest-macos-notification", "~> 0.2"
   spec.add_development_dependency "minitest-reporters", "~> 1.4"
   spec.add_development_dependency "rack-test", "~> 1.1"
   spec.add_development_dependency "rake", "~> 13.0"
