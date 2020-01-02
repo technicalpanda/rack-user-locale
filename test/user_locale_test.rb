@@ -60,8 +60,11 @@ class RackUserLocaleTest < Minitest::Test
 
         describe "with an multiple locales" do
           before do
-            get "http://example.com/", {},
-                "HTTP_ACCEPT_LANGUAGE" => "de-DE;q=0.8,de;q=0.8,no-NO;q=1.0,no;q=0.7,ru-RU;q=0.7,sv-SE;q=0.4,sv;q=0.3,nl-BE;q=0.9",
+            langs = "de-DE;q=0.8,de;q=0.8,no-NO;q=1.0,no;q=0.7,ru-RU;q=0.7,sv-SE;q=0.4,sv;q=0.3,nl-BE;q=0.9"
+
+            get "http://example.com/",
+                {},
+                "HTTP_ACCEPT_LANGUAGE" => langs,
                 "SCRIPT_NAME" => "/"
           end
 
@@ -77,8 +80,11 @@ class RackUserLocaleTest < Minitest::Test
 
       describe "when both a cooke and HTTP_ACCEPT_LANGUAGE headers are set" do
         before do
-          get "http://example.com/", {}, "HTTP_COOKIE" => "#{cookie_name}=af",
-                                         "HTTP_ACCEPT_LANGUAGE" => "ar-sa", "SCRIPT_NAME" => "/"
+          get "http://example.com/",
+              {},
+              "HTTP_COOKIE" => "#{cookie_name}=af",
+              "HTTP_ACCEPT_LANGUAGE" => "ar-sa",
+              "SCRIPT_NAME" => "/"
         end
 
         it "should have I18n.locale set to :af" do
@@ -157,8 +163,11 @@ class RackUserLocaleTest < Minitest::Test
         describe "with an multiple locales" do
           describe "at different weights" do
             before do
-              get "http://example.com/", {},
-                  "HTTP_ACCEPT_LANGUAGE" => "de-DE;q=0.8,de;q=0.8,no-NO;q=0.7,no;q=0.7,ru-RU;q=0.7,sv-SE;q=0.4,sv;q=0.3,nl-BE;q=0.9",
+              langs = "de-DE;q=0.8,de;q=0.8,no-NO;q=0.7,no;q=0.7,ru-RU;q=0.7,sv-SE;q=0.4,sv;q=0.3,nl-BE;q=0.9"
+
+              get "http://example.com/",
+                  {},
+                  "HTTP_ACCEPT_LANGUAGE" => langs,
                   "SCRIPT_NAME" => "/"
             end
 
@@ -173,8 +182,10 @@ class RackUserLocaleTest < Minitest::Test
 
           describe "at the same weight" do
             before do
-              get "http://example.com/", {},
-                  "HTTP_ACCEPT_LANGUAGE" => "fr,en,ja", "SCRIPT_NAME" => "/"
+              get "http://example.com/",
+                  {},
+                  "HTTP_ACCEPT_LANGUAGE" => "fr,en,ja",
+                  "SCRIPT_NAME" => "/"
             end
 
             it "should have I18n.locale set to :fr" do
@@ -204,8 +215,11 @@ class RackUserLocaleTest < Minitest::Test
 
       describe "when both a cooke and HTTP_ACCEPT_LANGUAGE headers are set" do
         before do
-          get "http://example.com/", {}, "HTTP_COOKIE" => "#{cookie_name}=ja",
-                                         "HTTP_ACCEPT_LANGUAGE" => "fr-be", "SCRIPT_NAME" => "/"
+          get "http://example.com/",
+              {},
+              "HTTP_COOKIE" => "#{cookie_name}=ja",
+              "HTTP_ACCEPT_LANGUAGE" => "fr-be",
+              "SCRIPT_NAME" => "/"
         end
 
         it "should have I18n.locale set to :ja" do

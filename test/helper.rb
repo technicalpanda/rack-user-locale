@@ -21,7 +21,7 @@ require "minitest/spec"
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "..", "lib"))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
-require "user-locale"
+require "user_locale"
 
 module Minitest
   class Test
