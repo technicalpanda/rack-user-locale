@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rack-user-locale (1.0.0)
+    rack-user-locale (1.0.1)
       i18n (>= 1.7.0)
       rack (>= 2.0.8)
 
@@ -19,8 +19,8 @@ GEM
     minitest (5.13.0)
     minitest-fail-fast (0.1.0)
       minitest (~> 5)
-    minitest-macos-notification (0.2.0)
-      minitest (~> 5.0)
+    minitest-macos-notification (0.3.0)
+      minitest (~> 5.13)
       minitest-reporters (~> 1.4)
       os (~> 1.0)
       terminal-notifier (~> 2.0)
@@ -56,7 +56,7 @@ DEPENDENCIES
   byebug (~> 11.0)
   minitest (~> 5.13)
   minitest-fail-fast (~> 0.1)
-  minitest-macos-notification (~> 0.2)
+  minitest-macos-notification (~> 0.3)
   minitest-reporters (~> 1.4)
   rack-test (~> 1.1)
   rack-user-locale!
