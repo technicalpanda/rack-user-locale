@@ -12,6 +12,7 @@ rescue Bundler::BundlerError => e
   exit e.status_code
 end
 
+require "byebug"
 require "minitest/autorun"
 require "minitest/fail_fast"
 require "minitest/macos_notification"
@@ -22,9 +23,11 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "..", "lib"))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require "user-locale"
 
-class Minitest::Test
-  extend Minitest::Spec::DSL
-  include Rack::Test::Methods
+module Minitest
+  class Test
+    extend Minitest::Spec::DSL
+    include Rack::Test::Methods
+  end
 end
 
 Minitest::Reporters.use!(
