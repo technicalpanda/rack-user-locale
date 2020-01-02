@@ -13,7 +13,7 @@ GEM
     concurrent-ruby (1.1.5)
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
-    minitest (5.12.2)
+    minitest (5.13.0)
     minitest-fail-fast (0.1.0)
       minitest (~> 5)
     minitest-macos-notification (0.1.0)
