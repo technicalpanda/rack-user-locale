@@ -16,7 +16,7 @@ module Rack
 
     def call(env)
       @env = env
-      set_i18n_locale
+      set_i18n
       app.call(env) && return unless request.get?
 
       @status, @headers, @body = app.call(env)
@@ -31,16 +31,7 @@ module Rack
     end
 
     def browser_locale
-      return if http_accept_languages.nil?
-
-      if check_accepted?
-        weighted_langs.each do |lang|
-          l = accepted_locale(split_lang(lang.first).to_sym)
-          return l unless l.nil?
-        end
-      end
-
-      split_lang(weighted_langs.first.first)
+      @browser_locale ||= detect_browser_locale
     end
 
     def check_accepted?
@@ -55,12 +46,21 @@ module Rack
       @default_locale ||= I18n.default_locale
     end
 
-    def http_accept_languages
-      @http_accept_languages ||= env["HTTP_ACCEPT_LANGUAGE"]
+    def detect_browser_locale
+      return if http_accept_languages.nil?
+
+      if check_accepted?
+        weighted_langs.each do |lang|
+          l = accepted_locale(split_lang(lang.first).to_sym)
+          return l unless l.nil?
+        end
+      end
+
+      split_lang(weighted_langs.first.first)
     end
 
-    def locale
-      @locale ||= cookie_locale || browser_locale || default_locale
+    def http_accept_languages
+      @http_accept_languages ||= env["HTTP_ACCEPT_LANGUAGE"]
     end
 
     def request
@@ -71,8 +71,8 @@ module Rack
       @response ||= Rack::Response.new(body, status, headers)
     end
 
-    def set_i18n_locale
-      new_locale = check_accepted? ? accepted_locale(locale.to_sym, default_locale) : locale.to_sym
+    def set_i18n
+      new_locale = check_accepted? ? accepted_locale(user_locale.to_sym, default_locale) : user_locale.to_sym
       I18n.locale = env["rack.locale"] = new_locale
     end
 
@@ -93,6 +93,10 @@ module Rack
       return if lang.nil?
 
       lang.split("-").first
+    end
+
+    def user_locale
+      @user_locale ||= cookie_locale || browser_locale || default_locale
     end
 
     def weighted_langs
