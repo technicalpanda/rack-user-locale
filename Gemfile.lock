@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     rack-user-locale (1.0.2)
-      i18n (>= 1.7.0)
-      rack (>= 2.0.8)
+      i18n (>= 1.8.2)
+      rack (>= 2.1.2)
 
 GEM
   remote: https://rubygems.org/
@@ -31,7 +31,7 @@ GEM
       ruby-progressbar
     os (1.0.1)
     parallel (1.19.1)
-    parser (2.7.0.1)
+    parser (2.7.0.2)
       ast (~> 2.4.0)
     rack (2.1.2)
     rack-test (1.1.0)
@@ -47,21 +47,21 @@ GEM
       unicode-display_width (>= 1.4.0, < 1.7)
     ruby-progressbar (1.10.1)
     terminal-notifier (2.0.0)
-    unicode-display_width (1.6.0)
+    unicode-display_width (1.6.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  byebug (~> 11.0)
-  minitest (~> 5.13)
+  byebug (~> 11.1)
+  minitest (~> 5.14)
   minitest-fail-fast (~> 0.1)
   minitest-macos-notification (~> 0.3)
   minitest-reporters (~> 1.4)
   rack-test (~> 1.1)
   rack-user-locale!
   rake (~> 13.0)
-  rubocop (~> 0.78)
+  rubocop (~> 0.79)
 
 BUNDLED WITH
    2.1.3
