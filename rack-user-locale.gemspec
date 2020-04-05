@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
   spec.version = Rack::UserLocale::VERSION
 
   spec.add_dependency "i18n", ">= 1.8.2"
-  spec.add_dependency "rack", ">= 2.1.2"
+  spec.add_dependency "rack", ">= 2.2.0"
   spec.add_development_dependency "byebug", "~> 11.1"
   spec.add_development_dependency "minitest", "~> 5.14"
   spec.add_development_dependency "minitest-fail-fast", "~> 0.1"
@@ -24,5 +24,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest-reporters", "~> 1.4"
   spec.add_development_dependency "rack-test", "~> 1.1"
   spec.add_development_dependency "rake", "~> 13.0"
-  spec.add_development_dependency "rubocop", "~> 0.79"
+  spec.add_development_dependency "rubocop", "~> 0.81"
 end
