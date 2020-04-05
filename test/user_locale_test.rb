@@ -39,7 +39,7 @@ class RackUserLocaleTest < Minitest::Test
         end
 
         it "should not set a cookie in the response" do
-          assert_equal nil, last_response["Set-Cookie"]
+          assert_nil last_response["Set-Cookie"]
         end
       end
 
@@ -92,7 +92,7 @@ class RackUserLocaleTest < Minitest::Test
         end
 
         it "should not set a cookie in the response" do
-          assert_equal nil, last_response["Set-Cookie"]
+          assert_nil last_response["Set-Cookie"]
         end
       end
 
@@ -141,7 +141,7 @@ class RackUserLocaleTest < Minitest::Test
         end
 
         it "should not set a cookie in the response" do
-          assert_equal nil, last_response["Set-Cookie"]
+          assert_nil last_response["Set-Cookie"]
         end
       end
 
@@ -227,7 +227,7 @@ class RackUserLocaleTest < Minitest::Test
         end
 
         it "should not set a cookie in the response" do
-          assert_equal nil, last_response["Set-Cookie"]
+          assert_nil last_response["Set-Cookie"]
         end
       end
 
