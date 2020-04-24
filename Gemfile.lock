@@ -63,7 +63,7 @@ DEPENDENCIES
   rack-test (~> 1.1)
   rack-user-locale!
   rake (~> 13.0)
-  rubocop (~> 0.81)
+  rubocop (~> 0.82)
 
 BUNDLED WITH
    2.1.3
