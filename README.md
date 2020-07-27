@@ -1,13 +1,13 @@
 # Rack User Locale
 
 [![Gem Version](https://badge.fury.io/rb/rack-user-locale.svg)](http://badge.fury.io/rb/rack-user-locale)
-[![Build Status](https://travis-ci.org/schinery/rack-user-locale.svg?branch=master)](https://travis-ci.org/schinery/rack-user-locale)
+[![Build Status](https://travis-ci.org/schinery/rack-user-locale.svg?branch=main)](https://travis-ci.org/schinery/rack-user-locale)
 
 A Rack module for getting and setting a user's locale via a cookie or browser default language.
 
 Credit to these gems for pointing me in the direction I wanted to go in...
 
-- https://github.com/rack/rack-contrib/blob/master/lib/rack/contrib/locale.rb
+- https://github.com/rack/rack-contrib/blob/main/lib/rack/contrib/locale.rb
 - https://github.com/jeremyvdw/rack-locale-selector
 - https://github.com/jeffersongirao/rack-locale_chooser
 
@@ -77,7 +77,7 @@ use Rack::UserLocale, cookie_name: "some-cookie-name"
 
 ## Contributing to rack-user-locale
 
-- Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
+- Check out the latest main to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 - Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
 - Fork the project.
 - Start a feature/bugfix branch.
