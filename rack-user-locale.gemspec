@@ -12,6 +12,7 @@ Gem::Specification.new do |spec|
   spec.homepage = "https://github.com/schinery/rack-user-locale"
   spec.license = "MIT"
   spec.name = "rack-user-locale"
+  spec.required_ruby_version = ">= 2.5"
   spec.summary = "A Rack module for getting and setting a user's locale"
   spec.version = Rack::UserLocale::VERSION
 
