@@ -7,9 +7,9 @@ require "rack/user-locale/version"
 Gem::Specification.new do |spec|
   spec.authors = ["Stuart Chinery"]
   spec.description = "A Rack module for getting and setting a user's locale via a cookie or browser default language."
-  spec.email = ["stuart.chinery@gmail.com"]
+  spec.email = ["code@technicalpanda.co.uk"]
   spec.files = Dir["lib/**/*", "MIT-LICENSE", "Rakefile", "README.md", "VERSION"]
-  spec.homepage = "https://github.com/schinery/rack-user-locale"
+  spec.homepage = "https://github.com/technicalpanda/rack-user-locale"
   spec.license = "MIT"
   spec.name = "rack-user-locale"
   spec.required_ruby_version = ">= 2.5"
