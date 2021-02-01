@@ -1,6 +1,7 @@
 # Rack User Locale
 
 [![Gem Version](https://badge.fury.io/rb/rack-user-locale.svg)](http://badge.fury.io/rb/rack-user-locale)
+![CI Build](https://github.com/technicalpanda/rack-user-locale/workflows/.github/workflows/ci.yml/badge.svg)
 
 A Rack module for getting and setting a user's locale via a cookie or browser default language.
 
