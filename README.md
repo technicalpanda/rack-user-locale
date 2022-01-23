@@ -5,6 +5,10 @@
 
 A Rack module for getting and setting a user's locale via a cookie or browser default language.
 
+## Requirements
+
+* Ruby >= 2.7
+
 ## Installation
 
 ```
