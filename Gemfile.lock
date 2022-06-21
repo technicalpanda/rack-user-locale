@@ -15,7 +15,7 @@ GEM
     concurrent-ruby (1.1.9)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
-    minitest (5.15.0)
+    minitest (5.16.0)
     minitest-fail-fast (0.1.0)
       minitest (~> 5)
     minitest-macos-notification (1.0.1)
@@ -63,7 +63,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug (~> 11.1)
-  minitest (~> 5.14)
+  minitest (~> 5.16)
   minitest-fail-fast (~> 0.1)
   minitest-macos-notification (~> 1.0)
   minitest-reporters (~> 1.4)
