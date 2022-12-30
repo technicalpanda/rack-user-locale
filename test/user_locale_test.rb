@@ -2,6 +2,7 @@
 
 require "helper"
 require "basic_rack_app"
+require "rack/builder"
 
 class RackUserLocaleTest < Minitest::Test
   describe Rack::UserLocale do
