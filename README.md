@@ -11,14 +11,10 @@ A Rack module for getting and setting a user's locale via a cookie or browser de
 
 ## Installation
 
-```
-gem install rack-user-locale
-```
-
 In a Gemfile:
 
 ```ruby
-gem 'rack-user-locale'
+gem 'rack-user-locale', require: "user_locale"
 ```
 
 ## Usage
