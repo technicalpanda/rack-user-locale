@@ -17,7 +17,7 @@ GEM
       concurrent-ruby (~> 1.0)
     json (2.6.3)
     language_server-protocol (3.17.0.3)
-    minitest (5.18.1)
+    minitest (5.19.0)
     minitest-fail-fast (0.1.0)
       minitest (~> 5)
     minitest-macos-notification (1.0.1)
@@ -69,7 +69,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug (~> 11.1)
-  minitest (~> 5.18)
+  minitest (~> 5.19)
   minitest-fail-fast (~> 0.1)
   minitest-macos-notification (~> 1.0)
   minitest-reporters (~> 1.6)
