@@ -7,7 +7,9 @@ A Rack module for getting and setting a user's locale via a cookie or browser de
 
 ## Requirements
 
-* Ruby >= 2.7
+* Ruby >= 3.0
+
+For Ruby < 3.0 use version 2.0.1.
 
 ## Installation
 
