@@ -7,8 +7,11 @@ A Rack module for getting and setting a user's locale via a cookie or browser de
 
 ## Requirements
 
-* Ruby >= 3.0
+* Ruby >= 3.2
+* Rack >= 3.1.0
+* I18n >= 1.8.2
 
+For Ruby < 3.1 use version 3.0.0.
 For Ruby < 3.0 use version 2.0.1.
 
 ## Installation
@@ -90,4 +93,3 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting with this project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/technicalpanda/rack-user-locale/blob/main/CODE_OF_CONDUCT.md).
-

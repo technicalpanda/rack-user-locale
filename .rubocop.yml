@@ -1,10 +1,17 @@
-require:
-  - rubocop-minitest
+inherit_mode:
+  merge:
+    - Exclude
+
+plugins:
+  - rubocop-performance
   - rubocop-rake
+  - rubocop-rspec
 
 AllCops:
+  Exclude:
+    - gemfiles/**/*
   NewCops: enable
-  TargetRubyVersion: 3.0
+  TargetRubyVersion: 3.2
 Layout/LineLength:
   Max: 120
 Metrics/BlockLength:
