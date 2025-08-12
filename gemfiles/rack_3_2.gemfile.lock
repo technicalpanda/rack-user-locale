@@ -1,5 +1,5 @@
 PATH
-  remote: .
+  remote: ..
   specs:
     rack-user-locale (3.0.0)
       i18n (>= 1.8.2)
@@ -84,11 +84,13 @@ GEM
     unicode-emoji (4.0.4)
 
 PLATFORMS
+  arm64-darwin-24
   ruby
 
 DEPENDENCIES
   appraisal (~> 2.5)
   byebug (~> 11.1)
+  rack (~> 3.2.0)
   rack-test (~> 2.2)
   rack-user-locale!
   rake (~> 13.2)
