@@ -1,10 +1,8 @@
 .bundle/
+.byebug_history
 .vscode/
-_yardoc/
+.yardoc/
 coverage/
 doc/
 pkg/
 tmp/
-
-.byebug_history
-.yardoc

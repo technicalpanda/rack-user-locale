@@ -13,10 +13,10 @@ Gem::Specification.new do |spec|
   spec.license = "MIT"
   spec.metadata["rubygems_mfa_required"] = "true"
   spec.name = "rack-user-locale"
-  spec.required_ruby_version = ">= 3.0"
+  spec.required_ruby_version = ">= 3.2"
   spec.summary = "A Rack module for getting and setting a user's locale"
   spec.version = Rack::UserLocale::VERSION
 
   spec.add_dependency "i18n", ">= 1.8.2"
-  spec.add_dependency "rack", ">= 2.2.0"
+  spec.add_dependency "rack", ">= 3.1.0"
 end
