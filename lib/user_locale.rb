@@ -16,20 +16,26 @@ module Rack
 
     def call(env)
       @env = env
+      locale_to_restore = I18n.locale
 
-      new_user_locale = check_accepted? ? accepted_locale_or_default(user_locale) : user_locale
       I18n.locale = env["rack.locale"] = new_user_locale
 
       status, headers, body = app.call(env)
 
       unless set_cookie?
-        Rack::Utils.set_cookie_header!(headers, options[:cookie_name], { value: I18n.locale, path: "/" })
+        Rack::Utils.set_cookie_header!(headers, options[:cookie_name], { value: new_user_locale, path: "/" })
       end
 
       [status, headers, body]
+    ensure
+      I18n.locale = locale_to_restore
     end
 
     private
+
+    def new_user_locale
+      @new_user_locale ||= check_accepted? ? accepted_locale_or_default(user_locale) : user_locale
+    end
 
     def request
       @request ||= Rack::Request.new(env)
