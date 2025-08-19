@@ -1,3 +1,6 @@
+> [!NOTE]
+> This gem is deprecated. Use https://github.com/rack/rack-contrib/blob/main/lib/rack/contrib/locale.rb instead, it will be much better 🙂
+
 # Rack User Locale
 
 [![Gem Version](https://badge.fury.io/rb/rack-user-locale.svg)](http://badge.fury.io/rb/rack-user-locale)
